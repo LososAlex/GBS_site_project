@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+		<div class="container" style="padding: 10px">
+			<h1>Добавление новости</h1>
+			<form action="" method="post" novalidate enctype="multipart/form-data">
+				{{ form.hidden_tag() }}
+				<p>
+					{{ form.title.label }}<br>
+					{{ form.title }}<br>
+					{% for error in form.title.errors %}
+						<div class="alert alert-danger" role="alert">
+							{{ error }}
+						</div>
+					{% endfor %}
+				</p>
+				<p>
+					{{ form.content.label }}<br>
+					{{ form.content }}<br>
+					{% for error in form.content.errors %}
+						<div class="alert alert-danger" role="alert">
+							{{ error }}
+						</div>
+					{% endfor %}
+				</p>
+				<p>
+					{{ form.image.label }}<br>
+					{{ form.image }}
+				</p>
+				<p>
+					{{ form.project.label }}<br>
+					{{ form.project }}<br>
+				</p>
+				<p>{{ form.submit() }}</p>
+			</form>
+		</div>
+{% endblock %}

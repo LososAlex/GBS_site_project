@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+	<title>{{title}}</title>
+	<style>
+		html {
+			height: 100%;
+		}
+		body { 
+			background-color: #000000;
+			background-image: url(/static/img/GameBox.png);
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			margin: 0;
+			position: relative;
+			min-height: 1000px;
+		}
+		main {
+			padding-bottom: 120px;
+		}
+		.w3-container {
+			float: center;
+			max-width: 83.5%;
+			max-height: 100%;
+			background-color: #FFFFFF;
+			word-wrap: break-word;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.footer {
+			background-color: #101010;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			height: 120px;
+		}
+		.footer p{
+			color: #006400;
+			margin: 10px 0;
+		}
+		.copyright {
+			font-size: 14px;
+			text-align: center;
+			border-top: 1px solid #000000;
+		}
+		div {
+			font-size: 20px;
+		}
+		textarea {
+			resize: none;
+			min-width: 100%;
+			height: 500px;
+		}
+	</style>
+</head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="/">
+		  <img src="/static/img/GameBoxLogo.png" width="30" height="35" alt="">
+		  Game Box Studio
+		  </a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+			  <li class="nav-item">
+				<a class="nav-link" href="/">На главную<span class="sr-only">(current)</span></a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/projects">Наши проекты</a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link" href="/about">О нас</a>
+			  </li>
+			</ul>
+		  </div>
+			{% if "username" in session %}
+			<a class="navbar-brand" href="/profile">{{session['username']}}</a>
+			{% else %}
+			<a class="navbar-brand" href="/login">Войти</a>
+			<a class="navbar-brand" href="/sign_up">Зарегистрироваться</a>
+			{% endif %}
+		</nav>
+    </header>
+    <!-- Begin page content -->
+    <main role="main" class="w3-container">
+		{% block content %}{% endblock %}
+    </main>
+	<div class="footer">
+		<p>
+			Контактная информация:
+			<img src="/static/img/vk_logo.png" width="30" height="30" alt="">
+			<a href="https://vk.com/game_boxgbs">Мы в вконтакте</a>
+			<img src="/static/img/GameBoxLogo.png" width="30" height="35" alt="">
+			studio.gamebox1@gmail.com
+		</p>
+		<p>Для связи: lososalex@yandex.ru</p>
+		<p class="copyright">Copyright by Алексей 'Losos_Alex' Коновалов<p>
+	</div>
+  </body>
+</html>

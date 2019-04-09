@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+		<center>
+		<h1>Ваш профиль</h1>
+		<p>Немного пустовато, зато свой</p>
+		<div>
+		{% if session['permission'] == 'admin' %}
+			<h2>Приветствую, администратор {{session['username']}}</h2>
+		{% else %}
+			<h2>Приветствую, {{session['username']}}</h2>
+		{% endif %}
+		<div>Вы {{session['user_id']}} пользователь сайта)</div>
+		<div><a href="/logout">Выйти</a></div>
+		</div>
+		</center>
+{% endblock %}

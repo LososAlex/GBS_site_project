@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+		<center><img src="static/img/GameBox.png" alt=""></center>
+		<div style="padding: 20px" align="center">
+			<center><h1> Добро пожаловать на сайт Game Box Studio! </h1></center>
+			<div>
+				Здесь вы можете ознакомится с составом нашей команды,<br>
+				а также узнать последние новости наших проектов
+			</div>
+			{% if session['permission'] == 'admin' %}
+				<div><a href="/add_news">Добавить новость</a></div>
+			{% endif %}
+			<h2><b>Новости проектов</b></h2>
+			{% for item in news %}
+				<div class="alert alert-dark" role="alert">
+					<h2>{{item[2]}}</h2>
+					{% if item[5] == 'CTK' %}
+						<p><a href="/Catch_The_Key">Catch The Key</a></p>
+					{% elif item[5] == 'GiOL' %}
+						<p><a href="/Game_in_One_Level">Game in One Level</a></p>
+					{% elif item[5] == 'TM' %}
+						<p><a href="/The_Mountain">The Mountain</a></p>
+					{% endif %}
+					{% if item[4] != None %}
+						<img src="/static/img/news/{{item[4]}}" alt="">
+					{% endif %}
+					<div>{{item[3]}}</div>
+					<a href="/news/{{item[0]}}">Посмотреть поближе</a>
+					{% if session['permission'] == 'admin' %}
+						<a href="/delete_news/{{item[0]}}">Удалить новость</a>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+{% endblock %}

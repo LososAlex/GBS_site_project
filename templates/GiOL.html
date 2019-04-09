@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+		<center><img src="static/img/GiOL_banner.png" alt=""></center>
+		<div style="padding: 20px; size: 20px">
+			<h2 align="center">
+				<b>Game in one level</b><br>
+				Платформер, который согреет этот мир.<br>
+				Игра представляет собой платформер, суть которого пройти всего лишь один уровень без чекпоинтов, т.е. умер - начал заново. Но этот уровень очень огромный и сложный. Поэтому еще никто не прошел эту игру.<br>		
+			</h2>
+		</div>
+		<div class="row" style="padding: 20px">
+			<div class="col">
+				<h2>Ссылки</h2>
+				<p>
+					<a href="https://vk.com/gameinonelevel">Вконтакте</a><br>
+					<a href="https://play.google.com/store/apps/details?id=com.GameBoxStudio.GiOL">Play Market</a>
+				</p>
+			</div>
+			<div class="col">
+				<h2>Разработчики</h2>
+				<p><a href="vk.com/lososalex">Алексей Коновалов</a></p>
+			</div>
+		</div>
+		<div style="padding: 20px">
+			{% if session['permission'] == 'admin' %}
+				<div><a href="/add_news">Добавить новость</a></div>
+			{% endif %}
+			<h2><b>Новости об игре</b></h2>
+			{% for item in news %}
+				<div class="alert alert-dark" role="alert">
+					<h2>{{item[2]}}</h2>
+					{% if item[4] != None %}
+						<img src="/static/img/news/{{item[4]}}" alt="">
+					{% endif %}
+					<div>{{item[3]}}</div>
+					<a href="/news/{{item[0]}}">Посмотреть поближе</a>
+					{% if session['permission'] == 'admin' %}
+						<a href="/delete_news/{{item[0]}}">Удалить новость</a>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+{% endblock %}

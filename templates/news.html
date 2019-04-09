@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+		<div style="padding: 20px" align="center">
+				<div>
+					<h2>{{item[2]}}</h2>
+					{% if item[5] == 'CTK' %}
+						<p><a href="/Catch_The_Key">Catch The Key</a></p>
+					{% elif item[5] == 'GiOL' %}
+						<p><a href="/Game_in_One_Level">Game in One Level</a></p>
+					{% elif item[5] == 'TM' %}
+						<p><a href="/The_Mountain">The Mountain</a></p>
+					{% endif %}
+					{% if item[4] != None %}
+						<img src="/static/img/news/{{item[4]}}" alt="">
+					{% endif %}
+					<div>{{item[3]}}</div>
+					{% if session['permission'] == 'admin' %}
+						<a href="/delete_news/{{item[0]}}">Удалить новость</a>
+					{% endif %}
+				</div>
+		</div>
+{% endblock %}
